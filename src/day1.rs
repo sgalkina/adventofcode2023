@@ -1,9 +1,8 @@
 use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+use std::io::{self};
 
 
-fn day1(lines: std::io::Lines<io::BufReader<File>>) {
+pub fn day1(lines: std::io::Lines<io::BufReader<File>>) {
     let mut result: i32 = 0;
     for line in lines {
         if let Ok(ip) = line {
@@ -17,7 +16,7 @@ fn day1(lines: std::io::Lines<io::BufReader<File>>) {
 }
 
 
-fn find_min_max(string: &String, words: Vec<&str>, min_idx: &mut usize, max_idx: &mut usize, min_val: &mut i32, max_val: &mut i32) {
+pub fn find_min_max(string: &String, words: Vec<&str>, min_idx: &mut usize, max_idx: &mut usize, min_val: &mut i32, max_val: &mut i32) {
     for (i, word) in words.iter().enumerate()  {
         let v: Vec<_> = string.match_indices(word).collect();
         for (idx, _occ) in v {
@@ -34,7 +33,7 @@ fn find_min_max(string: &String, words: Vec<&str>, min_idx: &mut usize, max_idx:
 }
 
 
-fn get_first_and_last(string: &String) -> i32 {
+pub fn get_first_and_last(string: &String) -> i32 {
     let words = vec!["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
     let digits = vec!["1", "2", "3", "4", "5", "6", "7", "8", "9"];
     let mut min_idx: usize = string.len();
@@ -52,7 +51,7 @@ fn get_first_and_last(string: &String) -> i32 {
 }
 
 
-fn day1_part2(lines: std::io::Lines<io::BufReader<File>>) {
+pub fn day1_part2(lines: std::io::Lines<io::BufReader<File>>) {
     let mut result: i32 = 0;
     for line in lines {
         if let Ok(ip) = line {
@@ -60,18 +59,4 @@ fn day1_part2(lines: std::io::Lines<io::BufReader<File>>) {
         }
     }
     println!("Result: {}", result);
-}
-
-
-fn main() {
-    if let Ok(lines) = read_lines("./inputs/day1_part2.txt") {
-        day1_part2(lines);
-    }
-}
-
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
 }
