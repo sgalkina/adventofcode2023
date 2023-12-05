@@ -14,7 +14,7 @@ use std::path::Path;
 
 fn main() {
     if let Ok(lines) = read_lines("./inputs/day4.txt") {
-        day4(lines);
+        day4_part2(lines);
     }
 }
 
