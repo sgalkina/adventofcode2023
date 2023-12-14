@@ -12,23 +12,25 @@
 // use crate::day6::*;
 // pub mod day7;
 // use crate::day7::*;
-pub mod day8;
-use crate::day8::*;
+// pub mod day8;
+// use crate::day8::*;
+pub mod day9;
+use crate::day9::*;
 
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
-
 fn main() {
-    if let Ok(lines) = read_lines("./inputs/day8_test_part2.txt") {
-        day8(lines);
+    if let Ok(lines) = read_lines("./inputs/day9.txt") {
+        day9(lines);
     }
 }
 
-
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
+where
+    P: AsRef<Path>,
+{
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
