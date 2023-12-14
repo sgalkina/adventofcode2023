@@ -39,10 +39,10 @@ pub fn day8(lines: std::io::Lines<io::BufReader<File>>) {
                 continue;
             }
             if x == 1 {continue;}
-            let vecs: Vec<String> = ip.split("=")
+            let vecs: Vec<String> = ip.split('=')
                 .map(|s| s.trim().to_string())
                 .collect();
-            let branches: Vec<String> = vecs[1].replace("(", "").replace(")", "").split(", ").map(|x| x.to_string()).collect();
+            let branches: Vec<String> = vecs[1].replace('(', "").replace(')', "").split(", ").map(|x| x.to_string()).collect();
             insert(vecs[0].clone(), branches[0].clone(), branches[1].clone(), &mut trees);
         }
     }
